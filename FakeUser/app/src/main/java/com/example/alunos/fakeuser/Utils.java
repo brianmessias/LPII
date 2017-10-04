@@ -2,7 +2,7 @@ package com.example.alunos.fakeuser;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.icu.text.SimpleDateFormat;
+
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.example.alunos.fakeuser.NetworkUtils.getJSONFromAPI;
@@ -24,9 +25,11 @@ public class Utils {
     public FakeUser getInformacao(String end){
         String json;
         FakeUser retorno;
-        json  Networkutils.getJSONFromAPI(end);
+        json = NetworkUtils.getJSONFromAPI(end);
         Log.i("Resultados", json);
         retorno = parseJson(json);
+
+        return retorno;
     }
     private FakeUser parseJson(String json){
         try{

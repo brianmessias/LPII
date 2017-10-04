@@ -48,19 +48,18 @@ public class MainActivity extends AppCompatActivity {
     }
     private class GetJson extends AsyncTask<Void, Void, FakeUser> {
         @Override
+        protected FakeUser doInBackground(Void... params) {
+            Utils util = new Utils();
+
+            return util.getInformacao("https://randomuser.me/api/0.7");
+        }
+
+        @Override
         protected void onPreExecute(){
             load.setVisibility(View.VISIBLE);
         }
-
         @Override
-        protected FakeUser doInBackground(void... params){
-            Utils util = new Utils();
-
-            return util.getInformacao("https:/randomuser.me/api/0.7");
-        }
-
-        @Override
-        protected void onPostExectute(FakeUser pessoa) {
+        protected void onPostExecute(FakeUser pessoa) {
             String strNome = pessoa.getNome().substring(0, 1).toUpperCase() + pessoa.getNome().substring(1);
             nome.setText(strNome);
             String strSobrenome = pessoa.getSobrenome().substring(0, 1).toUpperCase() + pessoa.getSobrenome().substring(1);
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             String strCidade = pessoa.getCidade().substring(0, 1).toUpperCase() + pessoa.getCidade().substring(1);
             cidade.setText(strCidade);
             estado.setText(pessoa.getEstado());
+            username.setText(pessoa.getUsername());
             senha.setText(pessoa.getSenha());
             nascimento.setText(pessoa.getNascimento());
             telefone.setText(pessoa.getTelefone());

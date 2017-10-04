@@ -1,5 +1,7 @@
 package com.example.alunos.fakeuser;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by alunos on 04/10/17.
  */
@@ -15,7 +17,7 @@ public class FakeUser {
     private String senha;
     private String nascimento;
     private String telefone;
-    private String foto;
+    private Bitmap foto;
 
     public String getNome() {
         return nome;
@@ -97,11 +99,11 @@ public class FakeUser {
         this.telefone = telefone;
     }
 
-    public String getFoto() {
+    public Bitmap getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(Bitmap foto) {
         this.foto = foto;
     }
 }
